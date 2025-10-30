@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Retrospectiva 💖</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     body {
       background: #fffafc;
       font-family: 'Poppins', sans-serif;
       color: #333;
     }
-    .login-screen {
+
+    .login-screen,
+    .splash-screen {
       height: 100vh;
       display: flex;
       align-items: center;
@@ -21,65 +25,195 @@
       background: linear-gradient(135deg, #ffe1eb, #ffd6f6);
       text-align: center;
     }
+
     .login-box {
       background: white;
       border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       padding: 40px;
       width: 90%;
       max-width: 400px;
+      animation: fadeIn 0.5s ease-in;
     }
+
     .login-box input {
       border-radius: 12px;
     }
+
+    .login-box .btn-primary {
+      background-color: #ff4b6e;
+      border-color: #ff4b6e;
+      border-radius: 12px;
+      padding: 10px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .login-box .btn-primary:hover {
+      background-color: #e6395b;
+      border-color: #e6395b;
+      transform: scale(1.05);
+    }
+
+    .splash-screen {
+      display: none;
+    }
+
+    .splash-box {
+      animation: fadeIn 1s ease-in;
+    }
+
+    .btn-special {
+      background: white;
+      color: #ff4b6e;
+      border: 2px solid #ff4b6e;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 75, 110, 0.3);
+    }
+
+    .btn-special:hover {
+      background: #ff4b6e;
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 75, 110, 0.4);
+    }
+
     #conteudo {
       display: none;
       animation: fadeIn 1s ease-in;
     }
+
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
+
     section {
       padding: 80px 0;
     }
+
     h2 {
       color: #ff4b6e;
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+
+    #fotos img {
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    #fotos p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Nova Seção de Bilhetes */
+    #bilhetes {
+      background: linear-gradient(135deg, #fffafc 0%, #ffe6ef 100%);
+    }
+
+    .btn-promise {
+      background-color: #ff4b6e;
+      border-color: #ff4b6e;
+      color: white;
+      font-weight: bold;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-promise:hover {
+      background-color: #e6395b;
+      transform: scale(1.05);
+    }
+
+    /* Estilo do Modal (Pop-up) */
+    .modal-header {
+      background-color: #ff4b6e;
+      color: white;
+    }
+
+    .modal-title {
       font-weight: bold;
     }
-    #musica {
-      background: linear-gradient(135deg, #fff5f8 0%, #ffe6ef 100%);
+
+    .modal-body {
+      font-size: 1.2rem;
+      color: #333;
+      padding: 30px;
     }
-    #musica iframe {
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-      border-radius: 12px;
-    }
-    footer {
+
+    #futuro {
       background: #fff;
-      color: #888;
+    }
+
+    footer {
+      background: #333;
+      color: #ccc;
       text-align: center;
       padding: 20px;
       font-size: 0.9rem;
     }
+
+    #btnTopo {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #ff4b6e;
+      color: white;
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #btnTopo:hover {
+      background-color: #e6395b;
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- TELA DE LOGIN -->
   <div class="login-screen" id="login">
     <div class="login-box">
       <h2 class="mb-3">💖 Retrospectiva Especial 💖</h2>
-      <p>Digite a senha para entrar</p>
-      <input type="password" id="senha" class="form-control mb-3" placeholder="Senha">
+      <p>Apenas para a pessoa mais incrível que eu conheço. <br> Digite a data do nosso primeiro beijo <br><h6 style="font: italic;">Foi no "nosso" número</h6></p>
+      <input type="password" id="senha" class="form-control mb-3" placeholder="DDMMAAAA">
       <button class="btn btn-primary w-100" onclick="verificarSenha()">Entrar</button>
       <p class="text-danger mt-3" id="erro"></p>
     </div>
   </div>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="splash-screen" id="abertura">
+    <div class="splash-box">
+      <h1 class="mb-4" style="color: #333;">✨ Pronta? ✨</h1>
+      <a href="#" class="btn-special" onclick="mostrarConteudo()">
+        Clique para abrir nossa história 💌
+      </a>
+    </div>
+  </div>
+
+
   <div id="conteudo">
-    <!-- Seção inicial -->
-    <section class="text-center">
+    <section class="text-center" style="padding-top: 40px;">
       <div class="container">
         <h2 data-aos="fade-up">✨ Nossa Retrospectiva ✨</h2>
         <p class="lead mt-3" data-aos="fade-up" data-aos-delay="200">
@@ -88,80 +222,234 @@
       </div>
     </section>
 
-    <!-- Seção de Fotos -->
-    <section id="fotos" class="bg-light text-center">
+    <section id="fotos" class="text-center">
       <div class="container">
         <h2 data-aos="fade-up">📸 Nossos Momentos</h2>
         <p class="lead" data-aos="fade-up" data-aos-delay="200">
           Alguns dos nossos melhores sorrisos juntos 💖
         </p>
-        <div class="row mt-4">
-          <div class="col-md-4 mb-3" data-aos="zoom-in">
-            <img src="foto1.jpg" class="img-fluid rounded-4 shadow">
+
+        <div class="row mt-5 g-4">
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in">
+            <img src="img/10.jpeg" class="img-fluid rounded-4 shadow" alt="Nossa memória 1">
+            <p class="mt-2">Minha foto preferida💕</p>
           </div>
-          <div class="col-md-4 mb-3" data-aos="zoom-in" data-aos-delay="100">
-            <img src="foto2.jpg" class="img-fluid rounded-4 shadow">
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
+            <img src="img/9.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 2">
+            <p class="mt-2">O dia que você me fez gostar do calor</p>
           </div>
-          <div class="col-md-4 mb-3" data-aos="zoom-in" data-aos-delay="200">
-            <img src="foto3.jpg" class="img-fluid rounded-4 shadow">
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+            <img src="img/8.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 3">
+            <p class="mt-2">Provavelmente o dia mais feliz da minha vida</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+            <img src="img/7.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 4">
+            <p class="mt-2">Então deixa, eu tentar cuidar de você?</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+            <img src="img/6.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 5">
+            <p class="mt-2">Aqui foi o dia que conheci sua família</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="500">
+            <img src="img/5.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 6">
+            <p class="mt-2">A primeira vez que saímos, mas ainda como parças😆</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="600">
+            <img src="img/4.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 7">
+            <p class="mt-2">Nossa primeira foto juntos</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="700">
+            <img src="img/3.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 8">
+            <p class="mt-2">O caarinho mais gostoso desse mundo</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="800">
+            <img src="img/2.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 9">
+            <p class="mt-2">Te amo. ❤️</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Seção de Música -->
-    <section id="musica" class="text-center">
+
+    <section id="bilhetes" class="text-center">
       <div class="container">
-        <h2 data-aos="fade-up">🎶 Nossa Música</h2>
+        <h2 data-aos="fade-up">💌 Nossa Caixinha de Bilhetes</h2>
         <p class="lead" data-aos="fade-up" data-aos-delay="200">
-          Essa música sempre vai me lembrar de você 💞
+          Eu poderia escrever mil coisas que amo em você. <br>
+          Clique no botão para sortear um bilhete...
         </p>
 
-        <div class="row justify-content-center mt-4">
-          <div class="col-md-6" data-aos="zoom-in">
-            <iframe data-testid="embed-iframe" style="border-radius:12px"
-              src="https://open.spotify.com/embed/track/6VzcQuzTNTMFnJ6rBSaLH9?utm_source=generator"
-              width="100%" height="152" frameborder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"></iframe>
-          </div>
+        <div class="mt-4" data-aos="zoom-in" data-aos-delay="300">
+          <button class="btn btn-promise" data-bs-toggle="modal" data-bs-target="#bilheteModal">
+            Sortear um bilhete 💖
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Mensagem final -->
     <section class="text-center">
       <div class="container">
         <h2 data-aos="fade-up">💌 Uma última coisinha...</h2>
-        <p class="lead mt-3" data-aos="fade-up" data-aos-delay="200">
-          Se eu pudesse escolher de novo, escolheria você em todas as versões da minha vida 💖  
+        <p class="lead mt-3" data-aos="fade-up" data-aos-delay="200" style="font-size: 1.4rem;">
+          Se eu pudesse escolher de novo, escolheria você em todas as versões da minha vida. 💖
           <br> Obrigado por ser o meu melhor presente. 🌹
         </p>
       </div>
     </section>
 
+    <section id="futuro" class="text-center" style="background: #fffafc;">
+      <div class="container">
+        <h2 data-aos="fade-up">📝 O Próximo Capítulo...</h2>
+        <p class="lead mt-3" data-aos="fade-up" data-aos-delay="200">
+          Nosso livro ainda tem tantas páginas em branco. <br>
+          Mal posso esperar para escrever o resto da nossa história com você.
+        </p>
+        <div data-aos="zoom-in" data-aos-delay="400">
+          <img src="" class="img-fluid rounded-4 shadow mt-4" alt="Futuro">
+          <p class="mt-2 fst-italic text-muted">A nossa próxima aventura nos espera...</p>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      Feito com 💖 por alguém que te ama
+      Feito com 💖 por alguém que te ama (e muito!)
     </footer>
+
+    <button onclick="topFunction()" id="btnTopo" title="Voltar ao topo">^</button>
+
   </div>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <div class="modal fade" id="bilheteModal" tabindex="-1" aria-labelledby="bilheteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bilheteModalLabel">Para você não esquecer...</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p id="mensagemBilhete"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+      duration: 800, // Duração das animações
+      once: true,     // Animar apenas uma vez
+    });
 
     function verificarSenha() {
       const senha = document.getElementById("senha").value;
       const erro = document.getElementById("erro");
       if (senha === "13092025") {
         document.getElementById("login").style.display = "none";
-        document.getElementById("conteudo").style.display = "block";
+        document.getElementById("abertura").style.display = "flex";
       } else {
-        erro.textContent = "Senha incorreta 💔";
+        erro.textContent = "Senha incorreta 💔 Tente nossa data!";
+        document.querySelector('.login-box').style.animation = 'shake 0.5s';
+        setTimeout(() => {
+          document.querySelector('.login-box').style.animation = '';
+        }, 500);
       }
     }
+
+    function mostrarConteudo() {
+      event.preventDefault();
+      document.getElementById("abertura").style.display = "none";
+      document.getElementById("conteudo").style.display = "block";
+    }
+
+    // Script do Botão "Voltar ao Topo"
+    var mybutton = document.getElementById("btnTopo");
+    window.onscroll = function () { scrollFunction() };
+    function scrollFunction() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+
+    // ==========================================================
+    //      *** MÁGICA DA CAIXINHA DE BILHETES ***
+    // ==========================================================
+
+    // !!! IMPORTANTE: EDITE SUAS MENSAGENS AQUI !!!
+    const listaDeBilhetes = [
+      "Eu amo o jeito que seu olho brilha quando você fala sobre um fato histórico ou conta uma história de qualquer lugar.",
+      "Prometo sempre fazer você rir, mesmo nos dias mais difíceis.",
+      "Lembra daquela vez que você disse que estava sem tempo pra ficarmos? Acho que consegui um tempinho agora... 💕",
+      "Eu soube que estava apaixonado no dia que fui te ensinar AutoCAD.",
+      "Você é a pessoa mais doce que eu já conheci.",
+      "Mal posso esperar para conhecermos a Itália juntos.",
+      "O seu sorriso é a minha coisa favorita no mundo.",
+      "Obrigado por sempre me apoiar.",
+      "Eu amo ser cuidado por você.",
+      "Minha vida ficou infinitamente melhor no segundo em que você entrou nela.",
+      "Prometo ser seu parceiro para todas as maratonas de todas as séries que você assistir.",
+      "Você é minha melhor amiga e o amor da minha vida."
+      // ADICIONE QUANTAS MAIS VOCÊ QUISER AQUI. QUANTO MAIS, MELHOR!
+    ];
+
+    const bilheteModal = document.getElementById('bilheteModal');
+    bilheteModal.addEventListener('show.bs.modal', function (event) {
+      // Sorteia um número aleatório
+      const indiceSorteado = Math.floor(Math.random() * listaDeBilhetes.length);
+
+      // Pega a mensagem sorteada
+      const mensagem = listaDeBilhetes[indiceSorteado];
+
+      // Coloca a mensagem dentro do modal
+      document.getElementById('mensagemBilhete').textContent = mensagem;
+    });
+
   </script>
 
+  <style>
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      50% {
+        transform: translateX(5px);
+      }
+
+      75% {
+        transform: translateX(-5px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+  </style>
+
 </body>
+
 </html>
