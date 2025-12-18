@@ -22,7 +22,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: linear-gradient(135deg, #ffe1eb, #ffd6f6);
+      background: linear-gradient(135deg, #ced3f9, #ffd6f6);
       text-align: center;
     }
 
@@ -41,8 +41,8 @@
     }
 
     .login-box .btn-primary {
-      background-color: #ff4b6e;
-      border-color: #ff4b6e;
+      background-color: #4b9fff;
+      border-color: #4b9fff;
       border-radius: 12px;
       padding: 10px;
       font-weight: bold;
@@ -50,8 +50,8 @@
     }
 
     .login-box .btn-primary:hover {
-      background-color: #e6395b;
-      border-color: #e6395b;
+      background-color: #3f39e6;
+      border-color: #3f39e6;
       transform: scale(1.05);
     }
 
@@ -65,8 +65,8 @@
 
     .btn-special {
       background: white;
-      color: #ff4b6e;
-      border: 2px solid #ff4b6e;
+      color: #4b9fff;
+      border: 2px solid #4b9fff;
       border-radius: 50px;
       padding: 15px 30px;
       font-size: 1.2rem;
@@ -77,7 +77,7 @@
     }
 
     .btn-special:hover {
-      background: #ff4b6e;
+      background: #3f39e6;
       color: white;
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(255, 75, 110, 0.4);
@@ -103,7 +103,7 @@
     }
 
     h2 {
-      color: #ff4b6e;
+      color: #4b9fff;
       font-weight: 700;
       font-size: 2.5rem;
     }
@@ -124,8 +124,8 @@
     }
 
     .btn-promise {
-      background-color: #ff4b6e;
-      border-color: #ff4b6e;
+      background-color: #4b9fff;
+      border-color: #4b9fff;
       color: white;
       font-weight: bold;
       padding: 12px 25px;
@@ -135,13 +135,13 @@
     }
 
     .btn-promise:hover {
-      background-color: #e6395b;
+      background-color: #3f39e6;
       transform: scale(1.05);
     }
 
     /* Estilo do Modal (Pop-up) */
     .modal-header {
-      background-color: #ff4b6e;
+      background-color: #4b99ff;
       color: white;
     }
 
@@ -175,7 +175,7 @@
       z-index: 99;
       border: none;
       outline: none;
-      background-color: #ff4b6e;
+      background-color: #4b9fff;
       color: white;
       cursor: pointer;
       padding: 10px 15px;
@@ -185,17 +185,24 @@
     }
 
     #btnTopo:hover {
-      background-color: #e6395b;
+      background-color: #3f39e6;
     }
   </style>
 </head>
 
 <body>
 
+  <audio id="bgMusic" loop>
+    <source src="img/so-nos-dois.mp3" type="audio/mpeg">
+  </audio>
+
+
   <div class="login-screen" id="login">
     <div class="login-box">
       <h2 class="mb-3">💖 Retrospectiva Especial 💖</h2>
-      <p>Apenas para a pessoa mais incrível que eu conheço. <br> Digite a data do nosso primeiro beijo <br><h6 style="font: italic;">Foi no "nosso" número</h6></p>
+      <p>Apenas para a pessoa mais incrível que eu conheço. <br> Digite a data do nosso primeiro beijo <br>
+      <h6 style="font: italic;">Foi no "nosso" número</h6>
+      </p>
       <input type="password" id="senha" class="form-control mb-3" placeholder="DDMMAAAA">
       <button class="btn btn-primary w-100" onclick="verificarSenha()">Entrar</button>
       <p class="text-danger mt-3" id="erro"></p>
@@ -205,7 +212,7 @@
   <div class="splash-screen" id="abertura">
     <div class="splash-box">
       <h1 class="mb-4" style="color: #333;">✨ Pronta? ✨</h1>
-      <a href="#" class="btn-special" onclick="mostrarConteudo()">
+      <a href="#" class="btn-special" onclick="mostrarConteudo(event)">
         Clique para abrir nossa história 💌
       </a>
     </div>
@@ -215,7 +222,8 @@
   <div id="conteudo">
     <section class="text-center" style="padding-top: 40px;">
       <div class="container">
-        <h2 data-aos="fade-up">✨ Nossa Retrospectiva ✨</h2>
+        <h2 data-aos="fade-up">✨ Nossa História ✨</h2>
+        <p>Até aqui</p>
         <p class="lead mt-3" data-aos="fade-up" data-aos-delay="200">
           Cada momento com você é uma lembrança que quero guardar pra sempre 💕
         </p>
@@ -272,7 +280,22 @@
 
           <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="800">
             <img src="img/2.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 9">
-            <p class="mt-2">Te amo. ❤️</p>
+            <p class="mt-2">❤️</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="600">
+            <img src="img/10.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 10">
+            <p class="mt-2">EU</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="700">
+            <img src="img/11.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 11">
+            <p class="mt-2">TE</p>
+          </div>
+
+          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="800">
+            <img src="img/12.jpg" class="img-fluid rounded-4 shadow" alt="Nossa memória 12">
+            <p class="mt-2">AMO</p>
           </div>
         </div>
       </div>
@@ -310,10 +333,17 @@
         <h2 data-aos="fade-up">📝 O Próximo Capítulo...</h2>
         <p class="lead mt-3" data-aos="fade-up" data-aos-delay="200">
           Nosso livro ainda tem tantas páginas em branco. <br>
-          Mal posso esperar para escrever o resto da nossa história com você.
+          Mal posso esperar para escrever o resto da nossa história com você. <br>
+          Mas antes, tenho uma coisa pra te perguntar... <br>
+          Clica no amor da minha vida e leia em voz alta.
         </p>
+        <a
+          href="https://open.spotify.com/playlist/4oQXZGgaDSmNPUO8tp3iR9?si=E-tlpAP_QdaexeU8i-Y8mA&pt=b5c09ae8753f4b31356b697d167b4df2" target="_blank"><img
+            src="img/13.jpg" class="img-fluid rounded-4 shadow" height="250px" width="250px" alt=""></a>
         <div data-aos="zoom-in" data-aos-delay="400">
-          <img src="" class="img-fluid rounded-4 shadow mt-4" alt="Futuro">
+          <br>
+          <h2 data-aos="fade-up">📝 Nosso futuro...</h2>
+          <img src="img/15.png" class="img-fluid rounded-4 shadow mt-4" height="300px" width="300px" alt="Futuro">
           <p class="mt-2 fst-italic text-muted">A nossa próxima aventura nos espera...</p>
         </div>
       </div>
@@ -423,6 +453,23 @@
       // Coloca a mensagem dentro do modal
       document.getElementById('mensagemBilhete').textContent = mensagem;
     });
+
+    // Show loading animation.
+
+
+    function mostrarConteudo(event) {
+      event.preventDefault();
+
+      document.getElementById("abertura").style.display = "none";
+      document.getElementById("conteudo").style.display = "block";
+
+      const music = document.getElementById("bgMusic");
+      music.volume = 0.5;
+      music.play().catch(() => { });
+    }
+
+
+
 
   </script>
 
